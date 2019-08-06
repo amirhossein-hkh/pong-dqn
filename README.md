@@ -42,6 +42,15 @@ Trainable params: 3,358,374
 Non-trainable params: 0
 ```
 
+## Dependencies
+
+```
+numpy (1.16.4)
+tensorflow (1.14.0)
+keras (2.2.4)
+gym (0.10.11)
+```
+
 ## Demo
 
 After about only one day of training the agent was able to score about at least 15 points in a game and win some of the games.
@@ -51,15 +60,6 @@ More training is needed for the agent to able to win all the games.
 | ![demo.gif](doc/demo.gif) | 
 |:--:| 
 | *The right player is the RL agent* |
-
-## Dependencies
-
-```
-numpy (1.16.4)
-tensorflow (1.14.0)
-keras (2.2.4)
-gym (0.10.11)
-```
 
 ## Test
 
