@@ -17,7 +17,8 @@ In this environment, the state is an RGB image (210x160) and each action "repeat
 
 Who ever first reaches 21 will win the game.
 
-To create an agent that will make a decision based on only the pixels of the given image(the state) I used the Depp Q-Network architecture which was proposed by DeepMind paper.
+To create an agent that will make a decision based on only the pixels of the given image(the state).
+I used the Deep Q-Network architecture which was proposed by the DeepMind paper.
 
 The architecture of the network is as follow:
 
