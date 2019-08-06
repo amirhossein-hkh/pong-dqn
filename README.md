@@ -39,16 +39,60 @@ Trainable params: 3,358,374
 Non-trainable params: 0
 ```
 
+## Test
+
+You can test the code by only loading the model with following code:
+
+```python
+import gym
+import cv2
+import numpy as np
+from keras.models import load_model
+import skvideo.io
+
+def downsample(observation):
+	s = cv2.cvtColor(observation[30:,:,:], cv2.COLOR_BGR2GRAY)
+	s = cv2.resize(s, (80,80), interpolation = cv2.INTER_AREA) 
+	s = s/255.0
+	return s
+
+def update_state(state,observation):
+	ds_observation = downsample(observation)
+	state.append(ds_observation)
+	if len(state) > 4:
+		state.pop(0)
+
+def sample_action(model,s):
+	return np.argmax(model.predict(np.array([np.stack((s[0],s[1],s[2],s[3]),axis=2)]))[0])
+
+env = gym.make('Pong-v0')
+model = load_model('model.h5')
+done = False
+state = []
+observation = env.reset()
+update_state(state,observation)
+
+while not done:
+	env.render()
+	if len(state) < 4:
+		action = env.action_space.sample()
+	else:
+		action = sample_action(model,state)
+	observation, reward, done, _ = env.step(action)
+	update_state(state,observation)
+```
+
 ## Demo
 
 After about only one day of training the agent was able to score about at least 15 point and win some games.
+
 More training is needed for able to win all the games.
 
 | ![demo.gif](doc/demo.gif) | 
 |:--:| 
 | *The right player is the RL agent* |
 
-## Dependency
+## Dependencies
 
 ```
 numpy (1.16.4)
@@ -56,6 +100,7 @@ tensorflow (1.14.0)
 keras (2.2.4)
 gym (0.10.11)
 ```
+
 ## Reference
 
 [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)
