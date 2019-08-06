@@ -19,7 +19,7 @@ keras (2.2.4)
 gym (0.10.11)
 ```
 
-## Reinforcement learning (RL)
+## Reinforcement Learning (RL)
 Reinforcement learning is a branch of machine learning which concerned with learning from experience in an environment and maximize a reward signal.
 
 | ![rl.png](doc/RL.png) | 
