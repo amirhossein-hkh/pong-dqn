@@ -6,6 +6,7 @@ After about only one day of training the agent was able to score about at least 
 
 More training is needed for the agent to able to win all the games.
 
+With few minor changes the code can be used in other gym environments as well.
 | ![demo.gif](doc/demo.gif) | 
 |:--:| 
 | *The right player is the RL agent* |
