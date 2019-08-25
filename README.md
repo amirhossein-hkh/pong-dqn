@@ -72,7 +72,6 @@ import gym
 import cv2
 import numpy as np
 from keras.models import load_model
-import skvideo.io
 
 def downsample(observation):
 	s = cv2.cvtColor(observation[30:,:,:], cv2.COLOR_BGR2GRAY)
